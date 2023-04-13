@@ -1,19 +1,3 @@
-//Buttons
-// const pause = document.createElement('button')
-
-// button.innerText = 'Submit'
-// button.id = 'Submission'
-// button.style.fontSize = '25px'
-// button.style.fontFamily = 'sans serif'
-// button.style.position = 'absolute'
-// button.style.top = '100px'
-// button.style.left = '100px'
-
-// button.addEventListener('click', () =>{
-    
-//   })
-
-// document.body.appendChild(button)
 
 //board
 let board;
