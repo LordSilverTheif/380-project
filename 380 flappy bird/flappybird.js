@@ -65,7 +65,7 @@ window.onload = function() {
     document.addEventListener("keydown", e =>{
         if (e.code == 'Enter' && game_state != 'Play') {
             game_state= 'Play';
-            alert('Game has started');
+            // alert('Game has started');
             requestAnimationFrame(update);
             setInterval(placePipes, 1500);
         }else{
