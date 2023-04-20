@@ -155,7 +155,7 @@ function displayGameOver(){
     ctx.font = "50px Times New Roman";
     ctx.fillStyle = "black";
     ctx.textAlign = "center";
-    ctx.fillText("Game Over!", gameWidth/2, gameHeight/2);
+    ctx.fillText("In the Dead State!", gameWidth/2, gameHeight/2);
     ctx.font = "25px Times New Roman";
     ctx.fillText("Click reset to try again.", gameWidth/2, ((gameHeight/2) +50 ));
     running = false;
