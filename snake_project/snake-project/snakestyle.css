@@ -7,10 +7,14 @@
     border: 4px solid;
 }
 #scoreText{
+    position: absolute;
     font-family: "Times New Roman", cursive;
-    font-size: 70px;
+    font-size: 40px;
+    top:40px;
+    left: 900px;
 }
 #resetBtn{
+    position: absolute;
     font-family: "Times New Roman", cursive;
     font-size: 22px;
     width: 100px;
@@ -18,4 +22,6 @@
     border: 4px solid;
     border-radius: 15px;
     cursor: pointer;
+    top: 100px;
+    left:1000px;
 }

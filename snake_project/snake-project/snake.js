@@ -1,22 +1,37 @@
-
+//grabbing stuff from the html that can be changed in the java code
 const gameBoard = document.querySelector("#gameBoard");
 const ctx = gameBoard.getContext("2d");
 const scoreText = document.querySelector("#scoreText");
 const resetBtn = document.querySelector("#resetBtn");
+
+//sets the size for the game
 const gameWidth = gameBoard.width;
 const gameHeight = gameBoard.height;
+
+//sets the colors for backgroun and snake
 const boardBackground = "lightgray";
 const snakeColor = "lightgreen";
 const snakeBorder = "black";
 const foodColor = "crimson";
 const foodBorder = "black";
+
+//set size
 const unitSize = 25;
+
+//determines if the game is running
 let running = false;
+let game_state= 'Start';
+
+//sets velocity for the snake and food position
 let xVelocity = unitSize;
 let yVelocity = 0;
 let foodX;
 let foodY;
+
+//scores
 let score = 0;
+
+//creates the snake and sizes it
 let snake = [
     {x:unitSize * 4, y:0},
     {x:unitSize * 3, y:0},
@@ -25,21 +40,35 @@ let snake = [
     {x:0, y:0}
 ];
 
+//Adds event listeners
 window.addEventListener("keydown", changeDirection);
 resetBtn.addEventListener("click", resetGame);
 
-gameStart();
-createFood();
-drawFood();
+document.addEventListener("keydown", e =>{
+    if(e.code == 'Enter' && game_state != "Play"){
+        game_state= 'Play';
+        gameStart();
+        createFood();
+        drawFood();
+    }else if(e.code === "KeyR" && game_state === "Play"){
+        resetGame();
+    }else{
 
+    }
+})
+
+
+
+//starts the game when called
 function gameStart(){
     running = true;
-    scoreText.textContent = score;
+    scoreText.textContent = "Score: "+score;
     createFood();
     drawFood();
     nextTick();
 };
 
+//determines the next tick to make the game run smoothly
 function nextTick(){
     if(running){
         setTimeout(()=>{
@@ -55,11 +84,15 @@ else{
     displayGameOver();
 }
 };
+
+//clears the board leaving a blank slate
 function clearBoard(){
     ctx.fillStyle = boardBackground;
     ctx.fillRect(0 ,0, gameWidth, gameHeight);
 
 };
+
+//creates the food to be at random points on canvas
 function createFood(){
     function randomFood(min, max){
         const randNum = Math.round((Math.random() * (max - min) + min) / unitSize) * unitSize;
@@ -70,6 +103,8 @@ function createFood(){
     console.log(foodX);
 
 };
+
+//draws the snakes food on the screen everytime its eaten
 function drawFood(){
     ctx.fillStyle = foodColor;
     ctx.strokeStyle = foodBorder;
@@ -77,18 +112,22 @@ function drawFood(){
     ctx.strokeRect(foodX, foodY, unitSize, unitSize);
 
 };
+
+//moves the snake around smoothly on the screen
 function moveSnake(){
     const head = {x: snake[0].x + xVelocity, y: snake[0].y + yVelocity};
     snake.unshift(head);
     if(snake[0].x == foodX && snake[0].y == foodY){
         score += 1;
-        scoreText.textContent = score;
+        scoreText.textContent = "Score: "+score;
         createFood();
     }
     else{
         snake.pop();
     }
 };
+
+//Draws the snake when it is called
 function drawSnake(){
     ctx.fillStyle = snakeColor;
     ctx.strokeStyle = snakeBorder;
@@ -97,6 +136,8 @@ function drawSnake(){
         ctx.strokeRect(snakePart.x, snakePart.y, unitSize, unitSize);
     })
 };
+
+//Changes the direction the snake is moving when a certain key is pressed
 function changeDirection(event){
     const keyPressed = event.keyCode;
     console.log(keyPressed);
@@ -128,8 +169,9 @@ function changeDirection(event){
             yVelocity = unitSize;
             break;
     }
-}
-;
+};
+
+//Determines when the game should end
 function checkGameOver(){
     switch(true){
         case (snake[0].x < 0):
@@ -151,6 +193,8 @@ function checkGameOver(){
         }
     }
 };
+
+//Displays the game over message when the player loses
 function displayGameOver(){
     ctx.font = "50px Times New Roman";
     ctx.fillStyle = "black";
@@ -160,6 +204,8 @@ function displayGameOver(){
     ctx.fillText("Click reset to try again.", gameWidth/2, ((gameHeight/2) +50 ));
     running = false;
 };
+
+//Resets the game when called
 function resetGame(){
     score = 0;
     xVelocity = unitSize;
@@ -171,5 +217,5 @@ function resetGame(){
         {x:unitSize, y:0},
         {x:0, y:0}
     ];
-    gameStart();
+    game_state= 'Start';
 };
