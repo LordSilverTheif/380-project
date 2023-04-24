@@ -139,6 +139,7 @@ function update() {
 
     if (gameOver) {
         context.fillText("In the Dead State", 5, 90);
+        location.replace("../../gameover.php?score="+score+"&game=2");
     }
 }
 

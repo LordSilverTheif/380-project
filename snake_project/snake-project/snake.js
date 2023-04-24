@@ -203,6 +203,7 @@ function displayGameOver(){
     ctx.font = "25px Times New Roman";
     ctx.fillText("Click reset to try again.", gameWidth/2, ((gameHeight/2) +50 ));
     running = false;
+    location.replace("../../../gameover.php?score="+score+"&game=1");
 };
 
 //Resets the game when called
