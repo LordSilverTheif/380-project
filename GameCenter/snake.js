@@ -10,7 +10,7 @@ const gameHeight = gameBoard.height;
 
 //sets the colors for backgroun and snake
 const boardBackground = "lightgray";
-const snakeColor = "lightgreen";
+const snakeColor = "#90EE90";//"lightgreen";
 const snakeBorder = "black";
 const foodColor = "crimson";
 const foodBorder = "black";
@@ -31,6 +31,11 @@ let foodY;
 //scores
 let score = 0;
 
+//Changing the snakes color residual code
+var letters = "0123456789ABCDEF";
+var color = '#';
+var changecolor= 0;
+
 //creates the snake and sizes it
 let snake = [
     {x:unitSize * 4, y:0},
@@ -42,7 +47,10 @@ let snake = [
 
 //Adds event listeners
 window.addEventListener("keydown", changeDirection);
-resetBtn.addEventListener("click", resetGame);
+resetBtn.addEventListener("click", ()=>{
+    alert("New color: "+snakeColor)
+}
+);
 
 document.addEventListener("keydown", e =>{
     if(e.code == 'Enter' && game_state != "Play"){
@@ -121,10 +129,16 @@ function moveSnake(){
         score += 1;
         scoreText.textContent = "Score: "+score;
         createFood();
+        // changecolor += 1;
+        
     }
     else{
         snake.pop();
     }
+    // if(changecolor == 20){
+    //     snakeColor();
+    //     changecolor=0;
+    // }
 };
 
 //Draws the snake when it is called
@@ -219,3 +233,17 @@ function resetGame(){
     ];
     game_state= 'Start';
 };
+
+//Changes the snakes color after a certain interval of time
+let newColor = '#90EE90';
+function SnakeColor(){
+    try{
+        for (var i = 0; i < 6; i++){
+            newColor= color + letters[(Math.floor(Math.random() * 16))];
+        }
+        snakeColor = newColor;
+    }catch(e){
+        alert("Error: "+e +" when chaniging snakes color");
+    }
+    alert("New color: "+newColor);
+}
