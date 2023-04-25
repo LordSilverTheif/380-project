@@ -38,6 +38,42 @@ let gameOver = false;
 let score = 0;
 let game_state= 'Start';
 
+//determines which pipe to change
+let changecount= 0;
+let change = 0;
+let rand = 0;
+// var limit2 = BottomPipes.length;
+
+//collection of top and bottom pipe images
+TopPipes=[
+    "images/toptube-1.png",
+    "images/toptube-2.png",
+    "images/toptube-3.png",
+    "images/toptube-4.png",
+    "images/toptube-5.png",
+    "images/toptube-6.png",
+    "images/toptube-7.png",
+    "images/toptube-8.png",
+    "images/toptube-9.png",
+    "images/toptube-10.png",
+    "images/toppipe.png"
+]
+
+BottomPipes=[
+    "images/bottomtube-1.png",
+    "images/bottomtube-2.png",
+    "images/bottomtube-3.png",
+    "images/bottomtube-4.png",
+    "images/bottomtube-5.png",
+    "images/bottomtube-6.png",
+    "images/bottomtube-7.png",
+    "images/bottomtube-8.png",
+    "images/bottomtube-9.png",
+    "images/bottomtube-10.png",
+    "images/bottompipe.png"
+]
+    
+let limit1 = (TopPipes.length);
 
 window.onload = function() {
     board = document.getElementById("board");
@@ -101,6 +137,7 @@ function update() {
     }
     context.clearRect(0, 0, board.width, board.height);
 
+
     //bird
     velocityY += gravity;
     // bird.y += velocityY;
@@ -120,6 +157,7 @@ function update() {
         if (!pipe.passed && bird.x > pipe.x + pipe.width) {
             score += 0.5; //0.5 because there are 2 pipes! so 0.5*2 = 1, 1 for each set of pipes
             pipe.passed = true;
+            change += 0.5;
         }
 
         if (detectCollision(bird, pipe)) {
@@ -139,7 +177,17 @@ function update() {
 
     if (gameOver) {
         context.fillText("In the Dead State", 5, 90);
+<<<<<<< HEAD:380-flappy-bird/flappybird.js
         location.replace("../../gameover.php?score="+score+"&game=2");
+=======
+        change = 0;
+        changecount = 0;
+    }
+    
+    if(change == 20){
+        PipeChange(true);
+        change=0;
+>>>>>>> b2f7407f2b8f7d2ddad13b7baeb8e5beb47dba08:GameCenter/flappybird.js
     }
 }
 
@@ -195,4 +243,36 @@ function detectCollision(a, b) {
            a.x + a.width > b.x &&   //a's top right corner passes b's top left corner
            a.y < b.y + b.height &&  //a's top left corner doesn't reach b's bottom left corner
            a.y + a.height > b.y;    //a's bottom left corner passes b's top left corner
+}
+
+function getRandomInt(max){
+    rand = Math.floor(Math.random() * max)
+}
+
+function PipeChange(changeyes){
+    letchange= changeyes
+    if(letchange == true){
+        if(changecount == 0){
+            getRandomInt(limit1)
+            try{
+                topPipeImg.src = TopPipes[rand];
+            }catch(RangeError){
+                alert("The range of the listed pipes could not be used so default pipes will be used!")
+            }
+            changecount=1;
+            letchange= false;
+            
+        }else{
+            getRandomInt(limit1)
+            try{
+                bottomPipeImg.src = BottomPipes[rand];
+            }catch(RangeError){
+                alert("The range of the listed pipes could not be used so default pipes will be used!")
+            }
+            changecount=0;
+            letchange= false;
+        }
+    }else{
+
+    }
 }

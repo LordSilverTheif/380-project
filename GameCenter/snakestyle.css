@@ -10,8 +10,8 @@
     position: absolute;
     font-family: "Times New Roman", cursive;
     font-size: 40px;
-    top:40px;
-    left: 900px;
+    top:5.5vh;
+    left: 60vw;
 }
 #resetBtn{
     position: absolute;
@@ -22,6 +22,6 @@
     border: 4px solid;
     border-radius: 15px;
     cursor: pointer;
-    top: 100px;
-    left:1000px;
+    top: 15vh;
+    left:70vw;
 }

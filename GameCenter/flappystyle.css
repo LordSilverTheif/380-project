@@ -17,16 +17,16 @@ body {
     position: absolute;
     width: 140px;
     height: 60px;
-    top: 30px;
-    left: 200px;
+    top: 6vh;
+    left: 10vw;
     text-align: center;
     font-size: 20px;
 }
 
 #netural{
     position: absolute;
-    top: 140px;
-    left: 25px; 
+    top: 17vh;
+    left: 0vw; 
 }
 
 #neturalBG{
@@ -36,8 +36,8 @@ body {
 
 #HowTo{
     position: absolute;
-    top: 160px;
-    left: 55px;
+    top: 20vh;
+    left: 2vw;
     text-align: center;
     font-size: 20px;
     font-weight: bold;
@@ -47,8 +47,8 @@ body {
 
 #HowToImg{
     position: absolute;
-    top: 220px;
-    left: 180px;
+    top: 28vh;
+    left: 9vw;
 }
 
 /* .PlayImg{
@@ -58,8 +58,8 @@ body {
 
 #BirdMovement{
     position: absolute;
-    top: 360px;
-    left: 75px;
+    top: 45vh;
+    left: 4vw;
     text-align: center;
     font-size: 20px;
     font-weight: bold;
@@ -69,6 +69,6 @@ body {
 
 #BirdMovementImg{
     position: absolute;
-    top: 470px;
-    left: 55px;
+    top: 60vh;
+    left: 4vw;
 }
