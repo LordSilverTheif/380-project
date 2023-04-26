@@ -177,9 +177,7 @@ function update() {
 
     if (gameOver) {
         context.fillText("In the Dead State", 5, 90);
-<<<<<<< HEAD:380-flappy-bird/flappybird.js
         location.replace("../../gameover.php?score="+score+"&game=2");
-=======
         change = 0;
         changecount = 0;
     }
@@ -187,7 +185,6 @@ function update() {
     if(change == 20){
         PipeChange(true);
         change=0;
->>>>>>> b2f7407f2b8f7d2ddad13b7baeb8e5beb47dba08:GameCenter/flappybird.js
     }
 }
 
