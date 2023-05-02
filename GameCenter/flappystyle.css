@@ -34,6 +34,22 @@ body {
     height: 500px;
 }
 
+#netural2{
+    position: absolute;
+    top: 72vh;
+    left: 47vw;
+}
+
+#neturalBG2{
+    height: 100px;
+}
+
+#link{
+    position:absolute;
+    top:75vh;
+    left: 49vw;
+}
+
 #HowTo{
     position: absolute;
     top: 20vh;
