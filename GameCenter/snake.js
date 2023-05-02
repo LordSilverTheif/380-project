@@ -217,7 +217,7 @@ function displayGameOver(){
     ctx.font = "25px Times New Roman";
     ctx.fillText("Click reset to try again.", gameWidth/2, ((gameHeight/2) +50 ));
     running = false;
-    location.replace("../../../gameover.php?score="+score+"&game=1");
+    location.replace("../../gameover.php?score="+score+"&game=1");
 };
 
 //Resets the game when called
@@ -242,7 +242,7 @@ function SnakeColor(){
         for (var i = 0; i < 6; i++){
             newColor= color + letters[(Math.floor(Math.random() * 16))];
         }
-        snakeColor = newColor;
+        let snakeColor = newColor;
     }catch(e){
         alert("Error: "+e +" when chaniging snakes color");
     }
